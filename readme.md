@@ -32,6 +32,6 @@ The containerizer app consists of three main models: App, Container and RunningH
 ## Database and Indexing
 The project is using PostgreSQL as the database. Although MySQL is reported to be slightly faster than PostgreSQL in write operations according to recent benchmarks, PostgreSQL was chosen for its high compatibility with the Django framework and better data compatibility.
 
-Additionally, the decision has been made not to use indexing in the database. While indexing can improve performance in read operations and data retrieval, it can potentially slow down write operations. Since the majority of the platform's operations are write-type operations(running history records), the decision has been made to forgo indexing in favor of optimizing write performance.
+Additionally, adding indexes to the models in the project can improve the performance of database queries that involve these models. In particular, adding indexes to the id field in the App model and the container_id field in the Container and RunningHistoryRecord models can speed up queries that filter or sort by these fields which are the most common queries, to my knowledge.
 
-This approach indicates a prioritization of efficient data writes and a willingness to trade off some read performance. 
+This approach indicates a prioritization of efficient data reads and a willingness to trade off some write performance.
