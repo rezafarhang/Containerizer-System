@@ -11,8 +11,8 @@ status = (
 class App(models.Model):
     name = models.CharField(max_length=255)
     image_address = models.CharField(max_length=255)
-    envs = models.JSONField()
-    command = models.CharField(max_length=255)
+    envs = models.JSONField(blank=True, null=True)
+    command = models.CharField(max_length=255, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -39,7 +39,7 @@ class RunningHistoryRecord(models.Model):
                             related_name="containers"
                         )
     status = models.CharField(max_length=255, choices=status)
-    envs = models.JSONField()
+    envs = models.JSONField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
