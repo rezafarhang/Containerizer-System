@@ -21,8 +21,8 @@ The containerizer app consists of three main models: App, Container and RunningH
 
 2. Container Model:
     The Container model represents a running instance of an app. 
-        - `created_at`: This field is a DateTimeField with `auto_now_add=True`.
-        - `stopped_at`: This field is a DateTimeField too. These are useful for tracking <ins>running</ins> time of containers.
+    - `created_at`: This field is a DateTimeField with `auto_now_add=True`.
+    - `stopped_at`: This field is a DateTimeField too. These are useful for tracking <ins>running</ins> time of containers.
 
 3. RunningHistoryRecord Model:
     The RunningHistoryRecord model represents a record of a container's execution history. It includes a foreign key to the Container model, a status field to track the status of the execution, environment variables used, and a timestamp for when the execution occurred.
