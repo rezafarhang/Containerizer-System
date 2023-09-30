@@ -49,7 +49,7 @@ class RunNewContainerView(APIView):
 
 class RunContainerView(APIView):
     
-    def get(self, request, container_id):
+    def post(self, request, container_id):
 
         container = Container.objects.get(container_id=container_id)
         app = container.app
@@ -66,7 +66,7 @@ class RunContainerView(APIView):
 
 class StopContainerView(APIView):
 
-    def get(self, request, container_id):
+    def post(self, request, container_id):
 
         current_status = 'Finished'
 
