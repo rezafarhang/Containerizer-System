@@ -27,18 +27,15 @@ app_router.register('', AppViewSet, basename='App')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
 
-
     path('app/', include(app_router.urls)),
     path('app/<int:app_id>/run', RunNewContainerView.as_view(), name='run_app_view'),
-    # path('app/stop/', RunContainerView.as_view(), name='run_view'),
-
 
     path('container/<str:container_id>/run/', RunContainerView.as_view(), name='run_container_view'),
     path('container/<str:container_id>/stop/', StopContainerView.as_view(), name='stop_view'),
-
 
     path('history/', RunningHistoryView.as_view(), name='history_view'),
 
