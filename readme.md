@@ -14,7 +14,7 @@ In the platform, Authentication is developed using the Djoser library and Simple
 By integrating Djoser with Simple JWT, authentication in the web platform utilizes Djoser's built-in functionalities for user registration and login while also leveraging Simple JWT's capabilities for token-based authentication. This combination enables secure authentication mechanisms for RESTful APIs, ensuring that users can authenticate and access the platform's resources using JWTs.
 
 ### Containerization
-The containerizer app consists of two main models: Price and Cost. These models are designed to handle pricing and cost-related data in a flexible and efficient manner. 
+The containerizer app consists of three main models: App, Container and RunningHistoryRecord.
 
 1. App Model:
     The App model represents a Docker image that can be run as a container. It includes fields for the name of the app, the image address, environment variables, and the command to run the app.
