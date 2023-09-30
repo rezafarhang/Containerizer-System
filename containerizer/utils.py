@@ -5,6 +5,7 @@ from .models import RunningHistoryRecord, Container
 
 def run(app):
     client = docker.from_env()
+    print(app.command)
     container = client.containers.run(
                                     image=app.image_address, 
                                     command=app.command, 

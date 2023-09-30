@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
+
 
 
 status = (
@@ -12,9 +14,12 @@ class App(models.Model):
     name = models.CharField(max_length=255)
     image_address = models.CharField(max_length=255)
     envs = models.JSONField(blank=True, null=True)
-    command = models.CharField(max_length=255, blank=True, null=True)
+    command = ArrayField(models.CharField(max_length=255))
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+       indexes = [
+           models.Index(fields=['id']),]
 
     def __str__(self):
         return self.name
@@ -26,8 +31,13 @@ class Container(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     stopped_at = models.DateTimeField(blank=True, null=True)
 
+    class Meta:
+       indexes = [
+           models.Index(fields=['container_id']),]
+
     def __str__(self):
         return self.app.name + " : " + self.container_id
+    
 
 
 class RunningHistoryRecord(models.Model):
@@ -42,5 +52,6 @@ class RunningHistoryRecord(models.Model):
     envs = models.JSONField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-
-
+    class Meta:
+       indexes = [
+           models.Index(fields=['container_id']),]
